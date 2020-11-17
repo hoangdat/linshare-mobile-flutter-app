@@ -78,6 +78,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: IconButton(
                   onPressed: () => {},
                   icon: Image(
+                      key: Key('backButton'),
                       image: AssetImage(imagePath.icArrowBack),
                       alignment: Alignment.center),
                 ),
@@ -108,6 +109,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 24),
                           child: StoreConnector<AppState, dartz.Either<Failure, Success>>(
+                            key: Key('loginMessage'),
                             converter: (store) => store.state.authenticationState.viewState,
                             builder: (context, viewState) {
                               return CenterTextBuilder()
@@ -120,6 +122,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 40),
                           child: StoreConnector<AppState, dartz.Either<Failure, Success>>(
+                            key: Key('inputUrl'),
                             converter: (store) => store.state.authenticationState.viewState,
                             builder: (context, viewState) {
                                 return LoginTextBuilder()
@@ -136,6 +139,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 40),
                           child: StoreConnector<AppState, dartz.Either<Failure, Success>>(
+                            key: Key('inputEmail'),
                             converter: (store) => store.state.authenticationState.viewState,
                             builder: (context, viewState) {
                               return LoginTextBuilder()
@@ -155,6 +159,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 40),
                           child: StoreConnector<AppState, dartz.Either<Failure, Success>>(
+                              key: Key('inputPassword'),
                               converter: (store) => store.state.authenticationState.viewState,
                               builder: (context, viewState) {
                                 return LoginTextBuilder()
@@ -174,7 +179,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 67),
-                          child: StreamBuilder(builder: (context, snapshot) {
+                          child: StreamBuilder(key: Key('loginButton'), builder: (context, snapshot) {
                             return viewModel.store.state.authenticationState.isAuthenticationLoading()
                                 ? loadingCircularProgress()
                                 : loginButton(context, loginViewModel);
