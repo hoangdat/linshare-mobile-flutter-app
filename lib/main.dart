@@ -38,12 +38,14 @@ import 'package:linshare_flutter_app/presentation/widget/initialize_get_it//init
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:linshare_flutter_app/presentation/util/router/router.dart' as router;
+import 'package:flutter_driver/driver_extension.dart';
 
 import 'presentation/redux/states/app_state.dart';
 import 'presentation/widget/initialize/initialize_widget.dart';
 
 void main() async {
   setUpGetIt();
+  enableFlutterDriverExtension();
   runApp(LinShareApp());
 }
 
